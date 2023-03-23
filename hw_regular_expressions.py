@@ -58,9 +58,14 @@ def unification_duplicate(contacts_list):
                 if i[6] in '':
                     i[6] = j[6]
     contacts_list_new = list()
+    for i in contacts_list:
+        max = 0
+        if len(i) > max:
+            max = len(i)
     for value in contacts_list:
-        if value not in contacts_list_new:
-            contacts_list_new.append(value)
+        if max == len(value):
+            if value not in contacts_list_new:
+                contacts_list_new.append(value)
     return contacts_list_new
 
 
@@ -76,7 +81,6 @@ try:
         transform = change_name(cont)
         transform = change_number(transform)
         transform = unification_duplicate(transform)
-        pprint(transform)
         save_new_file(transform)
 except:
     print('Error! Try again!')
